@@ -20,6 +20,7 @@ import { AuthorizeInterceptor } from 'src/api-authorization/authorize.intercepto
     HomeComponent,
     CounterComponent,
     FetchDataComponent
+    
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
