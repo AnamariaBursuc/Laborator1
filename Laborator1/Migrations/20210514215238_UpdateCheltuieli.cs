@@ -7,32 +7,32 @@ namespace Laborator1.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropPrimaryKey(
-                name: "PK_cheltuieli",
-                table: "cheltuieli");
+                name: "PK_expenses",
+                table: "expenses");
 
             migrationBuilder.RenameTable(
-                name: "cheltuieli",
-                newName: "Cheltuieli");
+                name: "expenses",
+                newName: "Expenses");
 
             migrationBuilder.AddPrimaryKey(
-                name: "PK_Cheltuieli",
-                table: "Cheltuieli",
+                name: "PK_Expenses",
+                table: "Expenses",
                 column: "Id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropPrimaryKey(
-                name: "PK_Cheltuieli",
-                table: "Cheltuieli");
+                name: "PK_Expenses",
+                table: "Expenses");
 
             migrationBuilder.RenameTable(
-                name: "Cheltuieli",
-                newName: "cheltuieli");
+                name: "Expenses",
+                newName: "expenses");
 
             migrationBuilder.AddPrimaryKey(
-                name: "PK_cheltuieli",
-                table: "cheltuieli",
+                name: "PK_expenses",
+                table: "expenses",
                 column: "Id");
         }
     }

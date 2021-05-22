@@ -8,7 +8,7 @@ namespace Laborator1.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "cheltuieli",
+                name: "expenses",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -20,14 +20,14 @@ namespace Laborator1.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_cheltuieli", x => x.Id);
+                    table.PrimaryKey("PK_expenses", x => x.Id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "cheltuieli");
+                name: "expenses");
         }
     }
 }
