@@ -10,8 +10,8 @@ namespace Laborator1
         {
             public MappingProfile()
             {
-                CreateMap<Expenses, ExpenseViewModel>();//.ReverseMap();
-                CreateMap<Comment, CommentsViewModel>();
+                CreateMap<Expenses, ExpenseViewModel>().ReverseMap();//.ReverseMap();
+                CreateMap<Comment, CommentsViewModel>().ReverseMap();
                 CreateMap<Expenses, ExpenseWithCommentsViewModel>();
             }
         }

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Laborator1</name>
+    </assembly>
+    <members>
+        <!-- Badly formed XML comment ignored for member "M:Laborator1.Controllers.ExpensesController.FilterExpenses(System.Int32)" -->
+        <!-- Badly formed XML comment ignored for member "M:Laborator1.Controllers.ExpensesController.GetExpensesByDate(System.Nullable{System.DateTime},System.Nullable{System.DateTime})" -->
+        <member name="M:Laborator1.Controllers.ExpensesController.GetCommentsForExpense(System.Int32)">
+            <summary>
+            It retrieves an expense by id with the comments included
+            </summary>
+            <param name="id"></param>
+            <response code="200" >The expense</response>
+            <response code="404" >If the item is null</response>
+        </member>
+        <member name="M:Laborator1.Controllers.ExpensesController.DeleteExpenses(System.Int32)">
+            <summary>
+            Deletees some expense
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

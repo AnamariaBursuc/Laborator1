@@ -20,8 +20,7 @@ namespace Laborator1.Models
     };
     public class Expenses
     {
-        public int Id { get; set; }
-        [Required]
+        public int Id { get; set; } 
         public string Description { get; set; }
         public double Sum { get; set; }
         public DateTime Date { get; set; }

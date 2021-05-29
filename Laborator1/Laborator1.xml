@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Laborator1</name>
+    </assembly>
+    <members>
+        <!-- Badly formed XML comment ignored for member "M:Laborator1.Controllers.ExpensesController.FilterExpenses(System.Int32)" -->
+        <member name="M:Laborator1.Controllers.ExpensesController.GetExpenses(System.Nullable{System.Int32})">
+            <summary>
+            Retrieves all the expenses
+            </summary>
+            sample request:
+            https://localhost:44371/api/expenses
+            <param name="minSum"></param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Laborator1.Controllers.ExpensesController.GetExpensesByDate(System.Nullable{System.DateTime},System.Nullable{System.DateTime})" -->
+        <member name="M:Laborator1.Controllers.ExpensesController.GetCommentsForExpense(System.Int32)">
+             <summary>
+             It retrieves an expense by id with the comments included
+             </summary>
+             sample request:
+            https://localhost:44371/api/expenses/6/comments
+             <param name="id"></param>
+             <response code="200" >The expense is shown</response>
+             <response code="404" >If the item is null</response>
+        </member>
+        <member name="M:Laborator1.Controllers.ExpensesController.PostCommentForExpense(System.Int32,Laborator1.ViewModels.CommentsViewModel)">
+            <summary>
+            Posts a comment to an expense based on the expense id
+            </summary>
+            <param name="id"></param>
+            <param name="comment"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Laborator1.Controllers.ExpensesController.GetExpenses(System.Int32)">
+            <summary>
+            Retrieves expense by id
+            </summary>
+            <param name="id"></param>
+            <returns>Returns the expense by the id introduced</returns>
+        </member>
+        <member name="M:Laborator1.Controllers.ExpensesController.PutExpenses(System.Int32,Laborator1.Models.Expenses)">
+            <summary>
+            Updates an expense by id
+            </summary>
+            <param name="id"></param>
+            <param name="expenses"></param>
+            <returns>A newly created expense</returns>
+        </member>
+        <member name="M:Laborator1.Controllers.ExpensesController.PostExpenses(Laborator1.ViewModels.ExpenseViewModel)">
+             <summary>
+             Ads a new expense
+             </summary>
+             sample request:
+             {
+              "description": "Apa",
+             "sum": 200, 
+             "type":1,
+            "date": "2019-03-13T11:30:00"
+            }
+            <param name="expenses"></param>
+            <response code="201">Returns the newly created item</response>
+            <response code="400">If the item is null</response>   
+        </member>
+        <member name="M:Laborator1.Controllers.ExpensesController.DeleteExpenses(System.Int32)">
+            <summary>
+            Deletes an expense by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
