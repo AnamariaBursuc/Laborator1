@@ -4,7 +4,18 @@
         <name>Laborator1</name>
     </assembly>
     <members>
-        <!-- Badly formed XML comment ignored for member "M:Laborator1.Controllers.ExpensesController.FilterExpenses(System.Int32)" -->
+        <member name="M:Laborator1.Controllers.ExpensesController.FilterExpenses(System.Int32)">
+            <summary>
+            Retrieves a list of expense filtered by the minSum when added
+            </summary>
+            remarks
+            sample request:
+            https://localhost:44371/api/expenses/5
+            <param name="minSum"></param>
+            <returns> A list of expenses with minimum sum introduced</returns>
+            <response code="200" >Returns the expenses filtered</response>
+             <response code="400" >If the item is null</response>
+        </member>
         <member name="M:Laborator1.Controllers.ExpensesController.GetExpenses(System.Nullable{System.Int32})">
             <summary>
             Retrieves all the expenses
@@ -68,6 +79,13 @@
             Deletes an expense by id
             </summary>
             <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Laborator1.Controllers.UserExpensesListsController.MakeNewUserExpensesList(Laborator1.ViewModels.UserExpensesList.NewExpenseRequest)">
+            <summary>
+            Add new UserExpensesList
+            </summary>
+            <param name="newExpenseRequest"></param>
             <returns></returns>
         </member>
     </members>

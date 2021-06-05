@@ -19,6 +19,8 @@ using FluentValidation.AspNetCore;
 using FluentValidation;
 using Laborator1.ViewModels;
 using Laborator1.Validators;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace Laborator1
 {
@@ -54,6 +56,7 @@ namespace Laborator1
             services.AddTransient<IValidator<CommentsViewModel>, CommentValidator>();
             services.AddAutoMapper(typeof(MappingProfile));
             services.AddMvc();
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
@@ -61,17 +64,41 @@ namespace Laborator1
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+             .AddEntityFrameworkStores<ApplicationDbContext>()
+              .AddDefaultTokenProviders();
 
             services.AddIdentityServer()
                 .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
 
             services.AddAuthentication()
-                .AddIdentityServerJwt();
+                .AddIdentityServerJwt()
+                .AddJwtBearer(options =>
+                {
+                    options.SaveToken = true;
+                    options.RequireHttpsMetadata = true;
+                    options.TokenValidationParameters = new TokenValidationParameters()
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidAudience = Configuration["Jwt:Site"],
+                        ValidIssuer = Configuration["Jwt:Site"],
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:SigningKey"]))
+                    };
+                });
             services.AddControllersWithViews()
           .AddJsonOptions(options => options.JsonSerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter()));
             services.AddRazorPages();
+          
+                services.AddControllers();
+               /* services.AddSwaggerGen(c =>
+                {
+                    c.SwaggerDoc("v1", new OpenApiInfo { Title = "CodeGoDigital", Version = "v1" });
 
+                    var xmlFilePath = Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml");
+                    c.IncludeXmlComments(xmlFilePath);
+
+                });
+            */
             services.AddControllersWithViews()
                    .AddFluentValidation()
             .AddJsonOptions(options =>
@@ -110,6 +137,11 @@ namespace Laborator1
             {
                 app.UseDeveloperExceptionPage();
                 app.UseMigrationsEndPoint();
+                app.UseCors(builder =>
+                   builder.AllowAnyOrigin()
+                       .AllowAnyHeader()
+                       .AllowAnyMethod()
+               );
             }
             else
             {

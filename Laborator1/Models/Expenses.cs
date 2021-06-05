@@ -6,26 +6,26 @@ using System.Runtime.Serialization;
 
 namespace Laborator1.Models
 {
-  
+
     public enum Type
     {
-        food, 
+        food,
         utilities,
         transportation,
-        outing, 
+        outing,
         groceries,
-        clothes, 
-        electronics, 
+        clothes,
+        electronics,
         other
     };
     public class Expenses
     {
-        public int Id { get; set; } 
+        public int Id { get; set; }
         public string Description { get; set; }
         public double Sum { get; set; }
         public DateTime Date { get; set; }
         public Type Type { get; set; }
-        public List<Comment> Comments{ get; set; }
-
+        public List<Comment> Comments { get; set; }
+        public List<UserExpensesList> UserExpensesLists { get; set; }
     }
 }

@@ -44,6 +44,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.1.4" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.1.4" />
+	  <Folder Include="ViewModels\Authentication\" />
+	  <Folder Include="Validators\" />
+	  <Folder Include="ViewModels\UserExpensesLists\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -96,7 +99,10 @@
 
     <!-- Include the newly-built files in the publish output -->
     <ItemGroup>
+		<Folder Include="ViewModels\" />
 		<Folder Include="Validators\" />
+		<Folder Include="ViewModels\Authentication\" />
+		<Folder Include="ViewModels\UserExpensesList\" />
       <DistFiles Include="$(SpaRoot)dist\**; $(SpaRoot)dist-server\**" />
       <DistFiles Include="$(SpaRoot)node_modules\**" Condition="'$(BuildServerSideRenderer)' == 'true'" />
       <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">

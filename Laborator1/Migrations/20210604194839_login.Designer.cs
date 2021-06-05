@@ -4,14 +4,16 @@ using Laborator1.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Laborator1.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210604194839_login")]
+    partial class login
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,12 +26,12 @@ namespace Laborator1.Migrations
                     b.Property<int>("ExpensesId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserExpensesListsId")
+                    b.Property<int>("MonthlyUserExpensesId")
                         .HasColumnType("int");
 
-                    b.HasKey("ExpensesId", "UserExpensesListsId");
+                    b.HasKey("ExpensesId", "MonthlyUserExpensesId");
 
-                    b.HasIndex("UserExpensesListsId");
+                    b.HasIndex("MonthlyUserExpensesId");
 
                     b.ToTable("ExpensesUserExpensesList");
                 });
@@ -266,7 +268,7 @@ namespace Laborator1.Migrations
 
                     b.HasIndex("ApplicationUserId");
 
-                    b.ToTable("UserExpensesLists");
+                    b.ToTable("UserExpensesList");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -414,7 +416,7 @@ namespace Laborator1.Migrations
 
                     b.HasOne("Laborator1.Models.UserExpensesList", null)
                         .WithMany()
-                        .HasForeignKey("UserExpensesListsId")
+                        .HasForeignKey("MonthlyUserExpensesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -433,7 +435,7 @@ namespace Laborator1.Migrations
             modelBuilder.Entity("Laborator1.Models.UserExpensesList", b =>
                 {
                     b.HasOne("Laborator1.Models.ApplicationUser", "ApplicationUser")
-                        .WithMany("UserExpensesLists")
+                        .WithMany()
                         .HasForeignKey("ApplicationUserId");
 
                     b.Navigation("ApplicationUser");
@@ -488,11 +490,6 @@ namespace Laborator1.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Laborator1.Models.ApplicationUser", b =>
-                {
-                    b.Navigation("UserExpensesLists");
                 });
 
             modelBuilder.Entity("Laborator1.Models.Expenses", b =>

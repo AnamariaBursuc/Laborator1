@@ -14,6 +14,8 @@ namespace Laborator1.Data
     {
         public DbSet<Expenses> Expenses { get; set; }
         public DbSet<Comment> Comment { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<UserExpensesList> UserExpensesLists { get; set; }
 
         public ApplicationDbContext(
             DbContextOptions options,
@@ -21,5 +23,13 @@ namespace Laborator1.Data
         {
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Expenses>()
+                .HasIndex(e => e.Type)
+                .IsUnique()
+                .HasFilter(null);
+        }
     }
 }

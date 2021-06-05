@@ -30,7 +30,7 @@ namespace Laborator1.Controllers
         }
 
         /// <summary>
-        // Retrieves a list of expense filtered by the minSum when added
+        /// Retrieves a list of expense filtered by the minSum when added
         /// </summary>
         /// remarks
         /// sample request:

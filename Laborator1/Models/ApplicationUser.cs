@@ -8,5 +8,6 @@ namespace Laborator1.Models
 {
     public class ApplicationUser : IdentityUser
     {
+        public List<UserExpensesList> UserExpensesLists { get; set; }
     }
 }
