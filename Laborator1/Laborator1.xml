@@ -16,7 +16,7 @@
             <response code="200" >Returns the expenses filtered</response>
              <response code="400" >If the item is null</response>
         </member>
-        <member name="M:Laborator1.Controllers.ExpensesController.GetExpenses(System.Nullable{System.Int32})">
+        <member name="M:Laborator1.Controllers.ExpensesController.GetExpenses">
             <summary>
             Retrieves all the expenses
             </summary>

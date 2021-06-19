@@ -57,15 +57,12 @@ namespace Laborator1.Controllers
         /// <returns></returns>
         // GET: api/Expenses   
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Expenses>>> GetExpenses(int? minSum)
-        {
-            if (minSum == null)
+        public async Task<ActionResult<IEnumerable<Expenses>>> GetExpenses()
+        
             {
                 return await _context.Expenses.ToListAsync();
             }
-            return await _context.Expenses.Where(c => c.Sum >= minSum).ToListAsync();
-        }
-
+      
 
         /// <summary>
         /// Retrieves a list of expense filtered by the dates added
