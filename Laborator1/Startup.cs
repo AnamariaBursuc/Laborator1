@@ -116,9 +116,9 @@ namespace Laborator1
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseCors(builder => builder.WithOrigins("http://localhost:44371")
+         /*   app.UseCors(builder => builder.WithOrigins("http://localhost:44371")
                                                             .AllowAnyMethod()
-                                                            .AllowAnyHeader());
+                                                            .AllowAnyHeader());*/
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger(c =>
             {
@@ -138,10 +138,10 @@ namespace Laborator1
                 app.UseDeveloperExceptionPage();
                 app.UseMigrationsEndPoint();
                 app.UseCors(builder =>
-                   builder.AllowAnyOrigin()
-                       .AllowAnyHeader()
-                       .AllowAnyMethod()
-               );
+                  builder.AllowAnyOrigin()
+                      .AllowAnyHeader()
+                      .AllowAnyMethod()
+              );
             }
             else
             {

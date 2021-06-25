@@ -22,7 +22,6 @@
             </summary>
             sample request:
             https://localhost:44371/api/expenses
-            <param name="minSum"></param>
             <returns></returns>
         </member>
         <!-- Badly formed XML comment ignored for member "M:Laborator1.Controllers.ExpensesController.GetExpensesByDate(System.Nullable{System.DateTime},System.Nullable{System.DateTime})" -->
@@ -70,7 +69,6 @@
              "type":1,
             "date": "2019-03-13T11:30:00"
             }
-            <param name="expenses"></param>
             <response code="201">Returns the newly created item</response>
             <response code="400">If the item is null</response>   
         </member>

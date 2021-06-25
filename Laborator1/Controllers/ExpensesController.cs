@@ -10,9 +10,13 @@ using Laborator1.Models;
 using Laborator1.ViewModels;
 using AutoMapper;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Laborator1.Controllers
+
+
 {
+   
     [Route("api/[controller]")]
     [ApiController]
     public class ExpensesController : ControllerBase
@@ -53,7 +57,6 @@ namespace Laborator1.Controllers
         /// </summary>
         /// sample request:
         /// https://localhost:44371/api/expenses
-        /// <param name="minSum"></param>
         /// <returns></returns>
         // GET: api/Expenses   
         [HttpGet]
@@ -179,6 +182,7 @@ namespace Laborator1.Controllers
             return _mapper.Map<ExpenseViewModel>(expense);
          
         }
+
         /// <summary>
         /// Updates an expense by id
         /// </summary>
@@ -190,6 +194,7 @@ namespace Laborator1.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [Authorize(AuthenticationSchemes = "Identity.Application,Bearer")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutExpenses(int id, Expenses expenses)
         {
@@ -231,12 +236,13 @@ namespace Laborator1.Controllers
 
         ///}
 
-        /// <param name="expenses"></param>
-      
+
+
         /// <response code="201">Returns the newly created item</response>
         /// <response code="400">If the item is null</response>   
         // POST: api/Expenses
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize(AuthenticationSchemes = "Identity.Application,Bearer")]
         [HttpPost]
         public async Task<ActionResult<ExpenseViewModel>> PostExpenses(ExpenseViewModel expensesRequest)
         {
@@ -252,6 +258,7 @@ namespace Laborator1.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         // DELETE: api/Expenses/5
+        [Authorize(AuthenticationSchemes = "Identity.Application,Bearer")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteExpenses(int id)
         {
